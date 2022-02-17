@@ -1,0 +1,5 @@
+cwe，common weakness enumeration，通用缺陷列表，某一种类型的漏洞类别的编号
+
+​	常见的有：cwe-79：xss漏洞；cwe-89：SQL注入
+
+cve，common vulnerabilities and exposures，通用漏洞与披露，某一个漏洞类别编号
