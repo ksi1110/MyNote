@@ -3,3 +3,9 @@ cwe，common weakness enumeration，通用缺陷列表，某一种类型的漏�
 ​	常见的有：cwe-79：xss漏洞；cwe-89：SQL注入
 
 cve，common vulnerabilities and exposures，通用漏洞与披露，某一个漏洞类别编号
+
+MS-17-010，微软在17年发布的第10个安全通告，永恒之蓝，补丁一般以kb开头
+
+S2-053，S2：struts2，apache旗下开源开发java的框架。s2发布的第53个安全公告
+
+URL，统一资源定位符，用来告诉web容器，浏览器所请求资源的路径
