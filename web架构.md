@@ -34,3 +34,79 @@ Uniform Resource Locator，统一资源定位符，即网址，全球唯一
 
 https://zhuanlan.zhihu.com/p/71374158
 
+url格式：schema://login:password@address:port/path/to/resource/?query_string#fragment，模式://用户名：密码@地址:端口/具体路径/查询参数/锚点定位
+
+url是为了开放访问，除特殊的如FTP访问需要在账号密码外，其他一般在访问时不用输入账号密码，默认使用了一个匿名账号，例如apache的是www-data
+
+#### URL编码
+
+URL中path允许直接出现A-Za-z0-9，半角减号（-），下划线句点（.），波浪号（~），其他字符会被百分号编码，最好不要用中文
+
+例如：# --> %23；空格 --> %20，通常情况下进行编程时会用+号代替空格，URL原理是ASCII对照表，十六进制
+
+
+
+#### 报文分析工具
+
+1. 浏览器F12
+2. wireshark
+3. fiddler
+4. burp suite
+
+#### HTTP报文分析
+
+web应用的所有通信消息都要遵守HTTP协议的规范和要求
+
+HTTP请求由请求行、请求头、请求正文，三个部分组成
+
+1. 请求行：方法、资源路径、协议&版本，例如：GET /showdoc/web/ HTTP/1.1
+
+   方法：GET
+
+   资源路径：/showdoc/web/
+
+   协议&版本：HTTP/1.1
+
+2. 请求头：从请求报文第二行开始到第一个空行为止之间的内容，包含很多字段
+
+3. 请求正文：get方式没有请求正文，只有post方式有请求正文
+
+##### HTTP请求方法
+
+GET，最常用方法，通常用于请求服务器发送的某个资源
+
+POST，可以向服务器提交参数以及表单，包括文件流等
+
+HEAD，与get方法类似，但是在服务器响应中只返回首部
+
+PUT，向服务器写入文档
+
+TRACE，回显浏览器的请求
+
+OPTIONS，请求web服务器告知其支持的各种功能
+
+DELETE，请求服务器删除请求URL所指定的资源
+
+#### 		利用telnet功能模拟浏览器发送http请求
+
+​		GET  /showdoc/web/ HTTP/1.1
+
+​		HOST:192.168.7.97
+
+#### 	请求头中的主要字段
+
+HOST，主要用于指定被请求资源的Internet主机和端口号
+
+user-agent，浏览器指纹
+
+referer，包含一个URL，代表当前URL的上一个URL
+
+cookie，记录请求者的身份认证信息
+
+Accept-charset，用于指定客户端接收的字符集
+
+Accept-Type，用于向接收方指示实体的介质类型，数据类型
+
+Conten-Length，用于指明实体正文的长度，以字节方式存储的十进制数字来表示
+
+last-modified，用于指示资源的最后修改时间和日期
