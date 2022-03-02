@@ -34,7 +34,7 @@ Uniform Resource Locator，统一资源定位符，即网址，全球唯一
 
 https://zhuanlan.zhihu.com/p/71374158
 
-url格式：schema://login:password@address:port/path/to/resource/?query_string#fragment，模式://用户名：密码@地址:端口/具体路径/查询参数/锚点定位
+url格式：schema://login:password@address:port/path/to/resource/?query_string#fragment，模式://用户名：密码@地址:端口/具体路径/查询参数/锚点定位，片段标识符
 
 url是为了开放访问，除特殊的如FTP访问需要在账号密码外，其他一般在访问时不用输入账号密码，默认使用了一个匿名账号，例如apache的是www-data
 
