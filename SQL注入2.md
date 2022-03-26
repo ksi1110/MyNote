@@ -13,6 +13,12 @@
 
 2. 报错注入
 
+   在注入点的判断过程中，发现数据库中SQL语句的报错信息，会显示在页面中，因此可以进行报错注入。报错注入的原理，就是在错误信息中执行SQL语句。出发报错的方式 有很多，具体细节不同，最好背公式
+
+   1. group by 重复键冲突
+
+      [?id=33 and (select 1 from (select count(*),concat((select version() from information_schema.tables limit 0,1floor(rand()*2))x from information_schema.tables group by x)a --+]
+
 3. 布尔盲注
 
 4. 延时注入
