@@ -55,3 +55,5 @@ shellcode就是利用漏洞所执行的代码，完整的xss攻击会将shellcod
    我们可以把shellcode存储在客户端本地域中，比如HTTP cookie、flash共享对象、userdata、localstorage等
 
 5. XSS神器，beef，是一款XSS漏洞利用平台，使用beef可以进行浏览器劫持
+
+XSS测试，终极测试代码：`<script script "' OOnn>`，将代码提交到服务器验证是否过滤引号和尖括号，确定闭合方式，是否替换关键字，是否替换大小写。查看页面源代码后判定修改代码
