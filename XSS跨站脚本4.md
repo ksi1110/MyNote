@@ -36,4 +36,5 @@ XSS漏洞的利用平台
 1. 启动beef，集成在kali中，路径：/usr/share/beef-xss，配置文件：config.yaml，要注意不能启动之前要修改配置文件中默认的用户名和密码
 2. 利用beef进行浏览器劫持
 3. cookie窃取和欺骗：固定会话攻击
-4. 利用浏览器漏洞getshell
+4. 利用浏览器漏洞getshell，通过msf工具，可以利用ms10002、ms12063漏洞
+4. XSS平台，XSS盲打和XSS盲打平台
