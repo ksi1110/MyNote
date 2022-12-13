@@ -45,9 +45,7 @@ SQL注入，SQL injection是一种常见的web安全漏洞，攻击者利用这�
 
 2. mysql元数据库information_schema，这个数据库存储了库名、表明和字段名
 
-    ![image-20221109104616574](D:\MyNote\MyNote\picc\image-20221109104616574.png)			
-
-    
+    <img src="F:\mynote\NoteImg\image-20221109104616574.png" style="zoom:80%;" />
 
 3. mysql常用函数和参数
 
