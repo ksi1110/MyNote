@@ -14,7 +14,7 @@
 
     列出当前使用的数据库名，假设列出“sqltest”数据库
 
-4.  sqlmap.py -u "http://www.XXX.com/index.asp?id=1"  --is-dba**
+4.  sqlmap.py -u "http://www.XXX.com/index.asp?id=1"  --is-dba
 
     判断该注入点是否有管理员权限：返回true  表示是管理员
 
