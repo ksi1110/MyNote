@@ -4,7 +4,7 @@
 
 #### 常见WEB容器
 
-apache、IIS、nginx
+apache、IIS、nginx、tomcat
 
 #### 中间件服务器
 
