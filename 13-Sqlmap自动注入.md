@@ -36,6 +36,7 @@
 
 | 参数                                     | 含义                                                         | 示例                                                         |
 | ---------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
+| --batch                                  | 跳过手工确认，直接跑码                                       | python sqlmap.py -u url --batch                              |
 | -v                                       | 输出等级，0-6共7级，默认1级                                  | -v 3                                                         |
 | --level                                  | 默认等级是1，cookie测试为2，use-agent或refer测试为3，host测试为5 | **sqlmap**.py -u "www.baidu.com/user.php?id=7" --level 3     |
 | -u                                       | 指定目标，指定一个URL作为目标，还可以指定端口                | **sqlmap**.py -u "www.baidu.com/user.php?id=7"<br>**sqlmap**.py -url "www.baidu.com:8080/user.php?id=7" |
